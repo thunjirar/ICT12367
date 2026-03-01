@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Esther Bunny Home</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #ffe6f2, #ffd6eb);
+        font-family: 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* กระต่ายลอย */
+    .bunny {
+        width: 160px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .hero {
+        text-align: center;
+        padding: 70px 20px 40px;
+    }
+
+    .hero h1 {
+        color: #ff69b4;
+        font-size: 42px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .hero p {
+        color: #ff85c1;
+        font-size: 18px;
+    }
+
+    /* การ์ด */
+    .card-box {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin: 40px auto;
+        width: 90%;
+    }
+
+    .card {
+        background: white;
+        width: 260px;
+        padding: 25px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 8px 18px rgba(255,105,180,0.25);
+        transition: 0.3s;
+        border: 3px solid #ffd1e8;
+        position: relative;
+    }
+
+    .card::after {
+        content: "💗";
+        position: absolute;
+        top: -12px;
+        right: 15px;
+        font-size: 20px;
+    }
+
+    .card:hover {
+        transform: translateY(-10px) scale(1.05);
+    }
+
+    .card h3 {
+        color: #ff69b4;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 14px;
+        color: #ff99cc;
+    }
+
+    /* ปุ่ม */
+    .btn-pink {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        background: linear-gradient(135deg, #ff66a3, #ff1493);
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .btn-pink:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 12px rgba(255,20,147,0.4);
+    }
+
+    /* หัวใจลอย */
+    .heart {
+        position: fixed;
+        bottom: -10px;
+        color: #ff99cc;
+        animation: floatUp 6s linear infinite;
+        font-size: 18px;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .footer-bunny {
+        text-align: center;
+        margin: 50px 0 20px;
+        color: #ff85c1;
+        font-size: 14px;
+    }
+</style>
+
+<div class="hero">
+    <img src="https://i.imgur.com/8Km9tLL.png" class="bunny" alt="bunny">
+    <h1>Esther Bunny Website</h1>
+    <p>Welcome to my pastel pink world 🐰💖</p>
+</div>
+
+<div class="card-box">
+    <div class="card">
+        <h3>Home</h3>
+        <p>หน้าแรกธีมน่ารักสดใส</p>
+        <a href="/" class="btn-pink">เข้าสู่หน้าแรก</a>
+    </div>
+
+    <div class="card">
+        <h3>About</h3>
+        <p>ข้อมูลเกี่ยวกับเว็บไซต์</p>
+        <a href="/about" class="btn-pink">ดูเพิ่มเติม</a>
+    </div>
+
+    <div class="card">
+        <h3>Form</h3>
+        <p>แบบฟอร์มบันทึกข้อมูล</p>
+        <a href="/form" class="btn-pink">ไปยังฟอร์ม</a>
+    </div>
+</div>
+
+<div class="footer-bunny">
+    🐰 Esther Bunny Theme | ICT12367 SPU 💕
+</div>
+
+<!-- หัวใจลอยหลายดวง -->
+<div class="heart" style="left:10%;">💗</div>
+<div class="heart" style="left:30%; animation-delay:2s;">💗</div>
+<div class="heart" style="left:50%; animation-delay:4s;">💗</div>
+<div class="heart" style="left:70%; animation-delay:1s;">💗</div>
+<div class="heart" style="left:90%; animation-delay:3s;">💗</div>
+
+{% endblock %}

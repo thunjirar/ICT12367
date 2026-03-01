@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>แบบฟอร์มบันทึกข้อมูลประชาชน</title>
+{% endblock %}
+
+{% block content %}
+<style>
+/* พื้นหลังชมพู + ลายหัวใจ */
+.form-bg {
+    min-height: 100vh;
+    background: #ffe4f0;
+    background-image:
+        radial-gradient(#ffb6d9 1.5px, transparent 1.5px),
+        radial-gradient(#ffb6d9 1.5px, #ffe4f0 1.5px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* กล่องฟอร์ม */
+.form-card {
+    background: #fff0f6;
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* หัวข้อ */
+.form-card h2 {
+    color: #ff4da6;
+    margin-bottom: 20px;
+}
+
+/* อินพุต */
+.form-card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #ffb6d9;
+    outline: none;
+}
+
+/* ปุ่ม */
+.btn-pink {
+    background: #ff69b4;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-pink:hover {
+    background: #ff4da6;
+}
+
+/* หัวใจลอย */
+.heart {
+    position: absolute;
+    color: #ff69b4;
+    font-size: 20px;
+    animation: float 4s infinite ease-in-out;
+}
+
+.heart:nth-child(1) { top: -10px; left: 20px; }
+.heart:nth-child(2) { top: -10px; right: 20px; animation-delay: 1s; }
+.heart:nth-child(3) { bottom: -10px; left: 40px; animation-delay: 2s; }
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-10px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0.7; }
+}
+</style>
+
+<div class="form-bg">
+    <div class="form-card">
+        <div class="heart">💗</div>
+        <div class="heart">💖</div>
+        <div class="heart">💞</div>
+
+        <h2>แบบฟอร์มบันทึกข้อมูลประชาชน</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="fullname" placeholder="ชื่อ-นามสกุล" required>
+            <input type="text" name="idcard" placeholder="เลขบัตรประชาชน" required>
+            <input type="text" name="phone" placeholder="เบอร์โทรศัพท์" required>
+
+            <button type="submit" class="btn-pink">บันทึกข้อมูล</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
