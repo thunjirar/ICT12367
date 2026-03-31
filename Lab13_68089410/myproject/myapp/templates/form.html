@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+แบบฟอร์มบันทึกข้อมูลประชาชน
+{% endblock %}
+
+{% block content %}
+<style>
+.form-card {
+    max-width: 450px;
+    margin: 60px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+.form-header {
+    background-color: #ac3640;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+</style>
+
+<div class="card form-card">
+    <div class="form-header">
+        {% if person %}แก้ไขข้อมูล{% else %}เพิ่มข้อมูลใหม่{% endif %}
+    </div>
+
+    <div class="card-body">
+        {% if error %}
+        <div class="alert alert-warning">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">ชื่อและนามสกุล</label>
+                <input type="text" class="form-control" name="name" placeholder="กรุณากรอกชื่อ-นามสกุล"
+                       value="{% if person %}{{ person.name }}{% endif %}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">อายุ</label>
+                <input type="number" class="form-control" name="age" placeholder="กรอกข้อมูลอายุเป็นตัวเลข"
+                       value="{% if person %}{{ person.age }}{% endif %}">
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    {% if person %}อัปเดตข้อมูล{% else %}บันทึกข้อมูล{% endif %}
+                </button>
+                <button type="reset" class="btn btn-danger">ล้างข้อมูล</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
